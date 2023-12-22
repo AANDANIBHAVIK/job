@@ -38,7 +38,7 @@ class AddCashAccountController extends GetxController {
         });
 
         if (response.code == 1) {
-    await    accountController.getAccountList(isLoaderShow: false);
+          await accountController.getAccountList(isLoaderShow: false);
           Navigator.pop(context);
           // SnackBars.successSnackBar(content: response.message!);
         }
@@ -48,6 +48,33 @@ class AddCashAccountController extends GetxController {
       } finally {
         isLoading.value = false;
       }
+    }
+  }
+
+  Future getIncomeList({bool isLoaderShow = true}) async {
+    try {
+      isLoading.value = true;
+      var token = GetStorage().read(GetStorageKey.USER_INFO) ?? '{}' as Map;
+      incomesList.clear();
+      totalIncomeValue.value = 0;
+      var response = await editYourBudgetRepository.getIncomesList(
+          token["userUuid"].toString(),
+          isLoaderShow: isLoaderShow);
+
+      if (response.incomes != null) {
+        List<Incomes> incomes = <Incomes>[];
+        incomes.addAll(response.incomes!);
+        incomesList.addAll(incomes.reversed);
+
+        for (var value in incomesList) {
+          totalIncomeValue.value =
+              (value.incomeAmount ?? 0) + totalIncomeValue.value;
+        }
+      }
+    } catch (e) {
+      debugPrint("::::::::::$e::::::::::");
+    } finally {
+      isLoading.value = false;
     }
   }
 
@@ -67,7 +94,7 @@ class AddCashAccountController extends GetxController {
           "avatar": imageName.value,
         });
         if (response.code == 1) {
-       await accountController.getAccountList(isLoaderShow: false);
+          await accountController.getAccountList(isLoaderShow: false);
           Navigator.of(context).popUntil((route) {
             return route.settings.name == routesName;
           });
@@ -93,7 +120,7 @@ class AddCashAccountController extends GetxController {
         var response = await addCashAccountRepository
             .deleteCashAccount('${userInfo["userUuid"].toString()}/$id');
         if (response.code == 1) {
-        await accountController.getAccountList(isLoaderShow: false);
+          await accountController.getAccountList(isLoaderShow: false);
           Navigator.of(context).popUntil((route) {
             return route.settings.name == Routes.accountScreen;
           });

@@ -9,7 +9,8 @@ class AddCashAccountRepository {
 
   Future<CommonMsgModel> addCashAccount(Map<String, String> parameters) async {
     try {
-      var response = await apiManager.post(APIConstants.addCashAccount, parameters,isLoaderShow: false);
+      var response = await apiManager
+          .post(APIConstants.addCashAccount, parameters, isLoaderShow: false);
       var responseMap = CommonMsgModel.fromJson(response);
       return responseMap;
     } catch (e) {
@@ -17,9 +18,11 @@ class AddCashAccountRepository {
     }
   }
 
-  Future<CommonMsgModel> updateCashAccount(Map<String, String> parameters) async {
+  Future<CommonMsgModel> updateCashAccount(
+      Map<String, String> parameters) async {
     try {
-      var response = await apiManager.put(APIConstants.updateCashAccount, parameters,isLoaderShow: false);
+      var response = await apiManager
+          .put(APIConstants.updateCashAccount, parameters, isLoaderShow: false);
       var responseMap = CommonMsgModel.fromJson(response);
       return responseMap;
     } catch (e) {
@@ -29,7 +32,8 @@ class AddCashAccountRepository {
 
   Future<CommonMsgModel> deleteCashAccount(String id) async {
     try {
-      var response = await apiManager.delete(APIConstants.deleteCashAccount + id,isLoaderShow: false);
+      var response = await apiManager
+          .delete(APIConstants.deleteCashAccount + id, isLoaderShow: false);
       var responseMap = CommonMsgModel.fromJson(response);
       return responseMap;
     } catch (e) {
@@ -37,4 +41,15 @@ class AddCashAccountRepository {
     }
   }
 
+  Future<IncomesModel> getIncomesList(String id,
+      {bool isLoaderShow = false}) async {
+    try {
+      var response = await apiManager.get(APIConstants.getIncomes + id,
+          isLoaderShow: isLoaderShow, isErrorSnackShow: isLoaderShow);
+      var responseMap = IncomesModel.fromJson(response);
+      return responseMap;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
