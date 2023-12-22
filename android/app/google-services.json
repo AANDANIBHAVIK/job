@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "304398038365",
+    "project_id": "joblatter-36cbb",
+    "storage_bucket": "joblatter-36cbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304398038365:android:2318d8029a5561b19e64b4",
+        "android_client_info": {
+          "package_name": "com.example.job_letter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304398038365-lskdqlm69vpbt0ju8oea3p91l07clk6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.job_letter",
+            "certificate_hash": "a818c89ac799253afcf0f54ad3c00a738f65f7c7"
+          }
+        },
+        {
+          "client_id": "304398038365-4nujb5lc4ikb3o0v67sq327rar5util6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPEv8pzGKGeYQv2vhIca3E4STJh5Vj-wk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304398038365-4nujb5lc4ikb3o0v67sq327rar5util6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "304398038365-5bd7ttifutjprvtq4s1dph4uisnuksj7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jobLetter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
